@@ -21,10 +21,10 @@ export default async function Home() {
   return (
     <main className="flex justify-center w-full ">
 
-      <div className="container mt-8 mx-10">
+      <div className="container lg:w-1/2 mt-8 mx-10">
 
          <div>
-            <div  className="absolute right-[10%] top-[80%] z-50">
+            <div  className="absolute right-[10%] lg:right-[25%] top-[80%] z-50">
               <Link href={'/create'}> <button className="bg-green-500 text-white size-[50px] rounded-full flex justify-center items-center"><FaPlus/></button> </Link>
             </div>
               
@@ -36,7 +36,7 @@ export default async function Home() {
         <div className="flex flex-wrap flex-col lg:items-center gap-4 mt-8">
 
         {data.map((item:any ,index:any)=>(
-              <div className="bg-green-400 text-white rounded-md font-bold text-xl px-4 py-2 hover:bg-red-500  flex items-center justify-between lg:w-1/2  " key={index}>
+              <div className="bg-green-400 text-white rounded-md font-bold text-xl px-4 py-2 hover:bg-red-500  flex items-center justify-between w-full  " key={index}>
                   <Link className="hover:underline" href={`/story/${item._id}`}>  {item.title}</Link>
                   <button className="text-2xl"><IoIosArrowForward/></button>
               </div>

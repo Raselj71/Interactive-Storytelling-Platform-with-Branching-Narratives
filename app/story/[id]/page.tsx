@@ -53,14 +53,14 @@ function page() {
   return (
     <div className='mx-10 flex justify-center'>
 
-         <div>
-               <p className='text-3xl font-bold mt-3'>Story Title: {story.title}</p>
+         <div className='container flex flex-col items-center mt-10'>
+               <p className='text-2xl font-bold mt-3 text-center'>Story Title: {story.title}</p>
 
-               <p className='mt-4 text-2xl'>{story.nodes[currentNode].text}</p>
+               <p className='mt-4 text-xl text-center'>{story.nodes[currentNode].text}</p>
 
-               <div className='flex gap-10 mt-6'>
+               <div className='flex  gap-2 mt-6 '>
                      {story.nodes[currentNode].choices.map((item,index)=>(
-                         <button className='hover:underline font-bold text-blue-600' onClick={()=>(handleClick(item.next))}>{item.text}</button>
+                         <button key={index} className='hover:underline  bg-green-500 text-white p-2 px-4 text-xs lg:text-base rounded-full  text-base' onClick={()=>(handleClick(item.next))}>{item.text}</button>
                      ))}
                </div>
          </div>

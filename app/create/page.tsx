@@ -52,7 +52,7 @@ const StoryForm = () => {
   return (
     <div className='w-full flex justify-center'>
 
-<div className='container mt-10 mx-10'>
+<div className='container  lg:w-1/2 mt-10 mx-10'>
       <h1 className='text-2xl font-bold text-center text mb-1'>Create a New Story</h1>
       <hr/>
       <input
@@ -77,18 +77,18 @@ const StoryForm = () => {
       <h2 className='text-xl mt-4 font-bold text-center '>Nodes List</h2>
       <hr></hr>
       {nodes.map(node => (
-        <div key={node.nodeId}>
+        <div className='mt-6' key={node.nodeId}>
           <h3 className='text-xl font-semibold '>Node {node.nodeId}</h3>
           <p>{node.text}</p>
-          <button className='bg-green-500  px-6 m-2 text-white rounded-sm py-2' onClick={() => handleAddChoice(node.nodeId)}>Add Choice</button>
-          <ol type='number' >
+          <button className='bg-green-500 mt-4 px-4 py-1 text-white rounded-sm ' onClick={() => handleAddChoice(node.nodeId)}>Add Choice</button>
+          <ul  className='list-disc' >
             {node.choices.map((choice, index) => (
               <li className='text-lg' key={index}>{choice.text} (leads to node {choice.next})</li>
             ))}
-          </ol>
+          </ul>
         </div>
       ))}
-      <button className='text-xl px-6  bg-green-500 text-white py-3 rounded-md hover:bg-red-500' onClick={handleSubmit}>Submit Story</button>
+      <button className='  bg-green-500 text-white  mt-4 w-full py-2 rounded-sm hover:bg-red-500' onClick={handleSubmit}>Submit Story</button>
     </div>
     </div>
   );
