@@ -31,7 +31,7 @@ const StoryForm = () => {
     console.log(storyData)
     
     try {
-      const response = await fetch('/stories', {
+      const response = await fetch('/api/addstory', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(storyData),
@@ -52,38 +52,40 @@ const StoryForm = () => {
   return (
     <div className='w-full flex justify-center'>
 
-<div className='mt-6 '>
-      <h1 className='text-2xl font-bold text'>Create a New Story</h1>
+<div className='container mt-10 mx-10'>
+      <h1 className='text-2xl font-bold text-center text mb-1'>Create a New Story</h1>
+      <hr/>
       <input
-        className='mt-2 border w-[30rem]  h-12 px-2'
+        className='mt-2 border rounded-md w-full  h-12 px-2'
         type="text"
         placeholder="Story Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <h2 className='text-2xl font-bold text'>Nodes</h2>
+     
       <div>
         <h3 className='text-xl font-bold text'>Current Node</h3>
         <input
-         className='mt-2 border w-[30rem]  h-12 px-2'
+         className='mt-2 border w-full  h-12 px-2'
           type="text"
           placeholder="Node Text"
           value={currentNode.text}
           onChange={(e) => setCurrentNode({ ...currentNode, text: e.target.value })}
         />
-        <button className='mx-3 h-12 p-4 bg-green-500 text-white font-medium' onClick={handleAddNode}>Add Node</button>
+        <button className='mt-4 w-full py-2 rounded-sm bg-green-500 text-white font-medium' onClick={handleAddNode}>Add Node</button>
       </div>
-      <h2 className='text-2xl font-bold text'>Nodes List</h2>
+      <h2 className='text-xl mt-4 font-bold text-center '>Nodes List</h2>
+      <hr></hr>
       {nodes.map(node => (
         <div key={node.nodeId}>
           <h3 className='text-xl font-semibold '>Node {node.nodeId}</h3>
           <p>{node.text}</p>
           <button className='bg-green-500  px-6 m-2 text-white rounded-sm py-2' onClick={() => handleAddChoice(node.nodeId)}>Add Choice</button>
-          <ul>
+          <ol type='number' >
             {node.choices.map((choice, index) => (
               <li className='text-lg' key={index}>{choice.text} (leads to node {choice.next})</li>
             ))}
-          </ul>
+          </ol>
         </div>
       ))}
       <button className='text-xl px-6  bg-green-500 text-white py-3 rounded-md hover:bg-red-500' onClick={handleSubmit}>Submit Story</button>

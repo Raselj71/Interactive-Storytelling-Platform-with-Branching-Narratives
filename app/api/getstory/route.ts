@@ -9,7 +9,7 @@ export async function GET(req:NextRequest){
         
         await connectdb()
 
-       const data= await StoryModel.find({})
+       const data= await StoryModel.find()
         return NextResponse.json({data, status:200})
 
     } catch (error) {
